@@ -23,7 +23,6 @@ class ViTFeatureExtractor:
         self.device = device if torch.cuda.is_available() else "cpu"
         
         # Load ViT model WITHOUT classification head
-        # We want just the transformer encoder outputs
         self.model = ViTModel.from_pretrained(model_name, use_safetensors=True)
         self.model.to(self.device)
         self.model.eval()
@@ -52,7 +51,6 @@ class ViTFeatureExtractor:
             outputs = self.model(pixel_values)
             
             # Use [CLS] token representation (first token)
-            # This is standard practice for ViT features
             cls_features = outputs.last_hidden_state[:, 0, :]  # (batch, hidden_size)
             
             all_features.append(cls_features.cpu().numpy())
