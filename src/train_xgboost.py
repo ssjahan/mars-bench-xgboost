@@ -53,10 +53,6 @@ class XGBoostWithImbalance:
     def apply_smote(self, X, y, sampling_strategy='auto', k_neighbors=5):
         """
         Apply SMOTE oversampling to balance classes.
-        
-        This is a form of "bagging" in the sense that it creates
-        synthetic samples for minority classes, effectively giving
-        them more weight in the training process.
         """
         k = min(k_neighbors, min(np.bincount(y)) - 1)
         k = max(1, k)  # Ensure k is at least 1
@@ -73,7 +69,7 @@ class XGBoostWithImbalance:
         return X_resampled, y_resampled
     
     def apply_smote_tomek(self, X, y):
-        """SMOTE + Tomek links - removes noisy samples from oversampled data."""
+        """SMOTE + Tomek links - uses random neighbors approach to create synthetic data."""
         smote_tomek = SMOTETomek(random_state=42)
         X_resampled, y_resampled = smote_tomek.fit_resample(X, y)
         print(f"SMOTE-Tomek shape: {X_resampled.shape}")
@@ -126,8 +122,7 @@ class XGBoostWithImbalance:
     
     def train_hybrid(self, X_train, y_train, X_val, y_val):
         """
-        Hybrid approach: SMOTE + sample_weights.
-        This gives the best of both worlds.
+        Hybrid approach: SMOTE + sample_weights. Creates synthetic samples and modifies the minority class weights in the loss function
         """
         X_resampled, y_resampled = self.apply_smote(X_train, y_train)
         sample_weights = self.compute_sample_weights(y_resampled)
@@ -215,7 +210,6 @@ def hyperparameter_tuning(X_train, y_train, X_val, y_val, num_classes):
 def train_and_evaluate_strategies(X_train, y_train, X_val, y_val, X_test, y_test, num_classes):
     """
     Train and evaluate all imbalance handling strategies.
-    This allows you to compare which works best for mb-domars16k.
     """
     
     strategies = {
@@ -266,9 +260,6 @@ if __name__ == "__main__":
     
     print(f"Training on {X_train.shape[0]} samples with {X_train.shape[1]} features")
     print(f"Number of classes: {num_classes}")
-    
-    # Optional: Hyperparameter tuning
-    # best_params = hyperparameter_tuning(X_train, y_train, X_val, y_val, num_classes)
     
     # Train all strategies
     results = train_and_evaluate_strategies(X_train, y_train, X_val, y_val, X_test, y_test, num_classes)
