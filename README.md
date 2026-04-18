@@ -3,7 +3,6 @@
 This repository contains the code and methodology for benchmarking the `mb-domars16k` dataset from the **Mars-Bench** paper using a ViT-L/16 feature extraction and XGBoost classification pipeline.
 
 ##  Key Results
-We established a new benchmark for the `mb-domars16k` dataset using frozen ViT-L/16 embeddings:
 
 | Metric | IQM Score (7 seeds) | baseline (Gemini 2.0 Flash) |
 | :--- | :--- | :--- |
@@ -70,7 +69,7 @@ mars_bench_xgboost/
 ```
 
 ##  Methodology Reference
-This evaluation follows the rigorous statistical standards described in:
+This evaluation follows the statistical standards described in:
 > *Mars-Bench: Benchmarking Game Models for Mars Explorations*
 > Link: https://arxiv.org/abs/2510.24010
 
