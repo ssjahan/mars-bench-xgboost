@@ -110,15 +110,6 @@ def evaluate_with_multiple_seeds(X_train, y_train, X_test, y_test, num_classes, 
 
 
 def compare_to_paper_baseline():
-    """
-    Compare your results to the paper's reported baselines.
-    
-    Paper baselines for mb-domars16k (Table 2):
-    - Gemini 2.0 Flash: F1 = 0.32
-    - GPT-4o Mini: F1 = 0.30
-    
-    Your XGBoost approach should significantly exceed these.
-    """
     
     paper_baselines = {
         'Gemini 2.0 Flash': 0.32,
@@ -133,8 +124,6 @@ def compare_to_paper_baseline():
     for model, f1 in paper_baselines.items():
         print(f"{model:<20} {f1:.2f}")
     
-    print("\nNote: The paper does NOT report ViT-L/16 baseline for mb-domars16k")
-    print("in a clear table. Your XGBoost results will be a new benchmark!")
 
 
 if __name__ == "__main__":
