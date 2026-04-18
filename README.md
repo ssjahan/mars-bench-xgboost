@@ -72,6 +72,7 @@ mars_bench_xgboost/
 ##  Methodology Reference
 This evaluation follows the rigorous statistical standards described in:
 > *Mars-Bench: Benchmarking Game Models for Mars Explorations*
+> Link: https://arxiv.org/abs/2510.24010
 
 ##  License
 MIT
