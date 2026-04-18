@@ -2,7 +2,7 @@
 
 This repository contains the code and methodology for benchmarking the `mb-domars16k` dataset from the **Mars-Bench** paper using a ViT-L/16 feature extraction and XGBoost classification pipeline.
 
-## 🚀 Key Results
+##  Key Results
 We established a new benchmark for the `mb-domars16k` dataset using frozen ViT-L/16 embeddings:
 
 | Metric | IQM Score (7 seeds) | baseline (Gemini 2.0 Flash) |
@@ -17,7 +17,7 @@ The pipeline consists of four main steps:
 3. **Training & Imbalance Handling**: Trains XGBoost with multiple strategies to handle class imbalance (Sample Weighting, SMOTE, and Hybrid).
 4. **Evaluation**: Rigorous 7-seed evaluation reporting InterQuartile Mean (IQM) and bootstrap confidence intervals.
 
-## 📦 Installation
+##  Installation
 
 ### Prerequisites
 - Python 3.12
@@ -38,7 +38,7 @@ source venv/Scripts/activate  # On Windows
 pip install -r requirements.txt
 ```
 
-## 🚀 Usage
+##  Usage
 
 Run the end-to-end pipeline:
 ```bash
@@ -53,7 +53,7 @@ python src/train_xgboost.py
 python src/evaluate.py
 ```
 
-## 📁 Repository Structure
+##  Repository Structure
 ```
 mars_bench_xgboost/
 ├── data/
@@ -69,9 +69,9 @@ mars_bench_xgboost/
 └── requirements.txt
 ```
 
-## 📜 Methodology Reference
+##  Methodology Reference
 This evaluation follows the rigorous statistical standards described in:
 > *Mars-Bench: Benchmarking Game Models for Mars Explorations*
 
-## 📝 License
+##  License
 MIT
