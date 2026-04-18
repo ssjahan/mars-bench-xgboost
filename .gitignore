@@ -1,0 +1,27 @@
+# Environments
+venv/
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Data & Models
+data/mb_domars16k/
+outputs/features/*.pkl
+outputs/models/*.pkl
+outputs/results/*.pkl
+outputs/results/*.png
+
+# Logs
+*.log
+pipeline_output.log
+training.log
+training_gpu.log
+training_gpu_verbose.log
+evaluation_7seeds.log
+
+# IDE
+.vscode/
+.idea/
